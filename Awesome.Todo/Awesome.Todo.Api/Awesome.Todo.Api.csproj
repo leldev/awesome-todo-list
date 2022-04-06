@@ -28,8 +28,4 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Awesome.Todo.Domain\Awesome.Todo.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

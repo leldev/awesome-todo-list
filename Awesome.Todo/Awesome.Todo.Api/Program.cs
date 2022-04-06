@@ -14,6 +14,9 @@ builder.Services.AddMediatR(typeof(Program).Assembly);
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+Console.WriteLine($"--> Connection String: {builder.Configuration.GetConnectionString("AwesomeConnectionString")}");
+
 builder.Services.AddDbContext<AwesomeDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("AwesomeConnectionString")));
 builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
 

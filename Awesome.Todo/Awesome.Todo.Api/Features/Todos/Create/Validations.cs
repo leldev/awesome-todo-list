@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Awesome.Todo.Api.Features.Todo.Update;
+namespace Awesome.Todo.Api.Features.Todos.Create;
 
 public class Validations : AbstractValidator<CommandRequest>
 {
@@ -8,7 +8,7 @@ public class Validations : AbstractValidator<CommandRequest>
     {
         this.CascadeMode = CascadeMode.Stop;
 
-        this.RuleFor(x => x.Body.Name)
+        this.RuleFor(x => x.Name)
             .NotEmpty()
             .WithMessage("Empty")
             .MaximumLength(Domain.Todo.MaxNameLength)

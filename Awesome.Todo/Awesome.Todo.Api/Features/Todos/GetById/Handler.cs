@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using Awesome.Todo.Api.Data;
+using Awesome.Todo.Api.Features.Todos.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Awesome.Todo.Api.Features.Todo.Delete;
+namespace Awesome.Todo.Api.Features.Todos.GetById;
 
-public class Handler : IRequestHandler<CommandRequest, IActionResult>
+public class Handler : IRequestHandler<QueryRequest, IActionResult>
 {
     private readonly AwesomeDbContext context;
     private readonly IMapper mapper;
@@ -17,16 +18,17 @@ public class Handler : IRequestHandler<CommandRequest, IActionResult>
         this.mapper = mapper;
     }
 
-    public async Task<IActionResult> Handle(CommandRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Handle(QueryRequest request, CancellationToken cancellationToken)
     {
         var todo = await this.context.Todos.FirstOrDefaultAsync(x => x.Id == request.Id).ConfigureAwait(false);
 
-        if (todo is not null)
+        if (todo is null)
         {
-            this.context.Todos.Remove(todo);
-            await this.context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+            return new NotFoundResult();
         }
-
-        return new NoContentResult();
+        else
+        {
+            return new OkObjectResult(this.mapper.Map<TodoReadModel>(todo));
+        }
     }
 }

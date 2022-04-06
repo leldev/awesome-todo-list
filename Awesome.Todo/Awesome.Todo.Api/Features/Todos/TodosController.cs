@@ -1,18 +1,18 @@
-﻿using Awesome.Todo.Api.Features.Todo.Models;
+﻿using Awesome.Todo.Api.Features.Todos.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace Awesome.Todo.Api.Features.Todo
+namespace Awesome.Todo.Api.Features.Todos
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class TodoController : Controller
+    public class TodosController : Controller
     {
         private readonly IMediator mediator;
 
-        public TodoController(IMediator mediator)
+        public TodosController(IMediator mediator)
         {
             this.mediator = mediator;
         }

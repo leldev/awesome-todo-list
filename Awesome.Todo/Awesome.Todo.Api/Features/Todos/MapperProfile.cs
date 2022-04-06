@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Awesome.Todo.Api.Features.Todo.Models;
+using Awesome.Todo.Api.Features.Todos.Models;
 using Awesome.Todo.Api.Services.MessageBusService.Models;
 
-namespace Awesome.Todo.Api.Features.Todo;
+namespace Awesome.Todo.Api.Features.Todos;
 
 public class MapperProfile : Profile
 {

@@ -1,0 +1,34 @@
+# kubectl apply -f awesome-todo-publisher-depl.yaml
+# kubectl rollout restart deployment awesome-todo-publisher
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: awesome-todo-publisher-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: awesome-todo-publisher
+  template:
+    metadata:
+      labels:
+        app: awesome-todo-publisher
+    spec:
+      containers:
+        - name: awesome-todo-publisher
+          image: leldev/awesome.todo.publisher:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  awesome-todo-publisher-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: awesome-todo-publisher
+  ports:
+  - name: awesome-todo-publisher
+    protocol: TCP
+    port: 80
+    targetPort: 80

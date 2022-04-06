@@ -7,12 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Awesome.Todo.Api", "Awesome
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{8DC0B47B-A7B5-4BE0-81F1-1EABAE1E88F1}"
 	ProjectSection(SolutionItems) = preProject
+		Infra\awesome-todo-publisher-depl.yaml = Infra\awesome-todo-publisher-depl.yaml
+		Infra\awesome-todo-publisher-np-srv.yaml = Infra\awesome-todo-publisher-np-srv.yaml
 		Infra\local-pvc.yaml = Infra\local-pvc.yaml
 		Infra\mssql-plat-depl.yaml = Infra\mssql-plat-depl.yaml
 		Infra\rabbitmq-depl.yaml = Infra\rabbitmq-depl.yaml
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Awesome.Todo.Domain", "Awesome.Todo.Domain\Awesome.Todo.Domain.csproj", "{5233AAB2-765B-4294-991B-18EAC72CB7E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +24,6 @@ Global
 		{195E3F2C-9F85-4610-ABED-9A6DB27C0047}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{195E3F2C-9F85-4610-ABED-9A6DB27C0047}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{195E3F2C-9F85-4610-ABED-9A6DB27C0047}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5233AAB2-765B-4294-991B-18EAC72CB7E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5233AAB2-765B-4294-991B-18EAC72CB7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5233AAB2-765B-4294-991B-18EAC72CB7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5233AAB2-765B-4294-991B-18EAC72CB7E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

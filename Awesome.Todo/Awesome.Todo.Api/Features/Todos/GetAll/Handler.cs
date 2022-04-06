@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Awesome.Todo.Api.Data;
-using Awesome.Todo.Api.Features.Todo.Models;
+using Awesome.Todo.Api.Features.Todos.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Awesome.Todo.Api.Features.Todo.GetById;
+namespace Awesome.Todo.Api.Features.Todos.GetAll;
 
 public class Handler : IRequestHandler<QueryRequest, IActionResult>
 {
@@ -20,15 +20,8 @@ public class Handler : IRequestHandler<QueryRequest, IActionResult>
 
     public async Task<IActionResult> Handle(QueryRequest request, CancellationToken cancellationToken)
     {
-        var todo = await this.context.Todos.FirstOrDefaultAsync(x => x.Id == request.Id).ConfigureAwait(false);
+        var todos = await this.context.Todos.ToListAsync(cancellationToken).ConfigureAwait(false);
 
-        if (todo is null)
-        {
-            return new NotFoundResult();
-        }
-        else
-        {
-            return new OkObjectResult(this.mapper.Map<TodoReadModel>(todo));
-        }
+        return new OkObjectResult(this.mapper.Map<List<TodoReadModel>>(todos));
     }
 }

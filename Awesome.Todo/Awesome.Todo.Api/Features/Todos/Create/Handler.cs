@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Awesome.Todo.Api.Data;
-using Awesome.Todo.Api.Features.Todo.Models;
+using Awesome.Todo.Api.Features.Todos.Models;
 using Awesome.Todo.Api.Services.MessageBusService;
 using Awesome.Todo.Api.Services.MessageBusService.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Awesome.Todo.Api.Features.Todo.Create;
+namespace Awesome.Todo.Api.Features.Todos.Create;
 
 public class Handler : IRequestHandler<CommandRequest, IActionResult>
 {

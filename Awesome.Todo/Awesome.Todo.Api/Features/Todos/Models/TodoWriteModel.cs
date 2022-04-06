@@ -1,4 +1,4 @@
-﻿namespace Awesome.Todo.Api.Features.Todo.Models
+﻿namespace Awesome.Todo.Api.Features.Todos.Models
 {
     public class TodoWriteModel
     {

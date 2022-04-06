@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Awesome.Todo.Api.Features.Todo.Delete;
+namespace Awesome.Todo.Api.Features.Todos.Delete;
 
 public class Validations : AbstractValidator<CommandRequest>
 {
