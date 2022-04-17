@@ -28,6 +28,7 @@ public class MessageBusClient : IMessageBusClient
 
         connection.ConnectionShutdown += Connection_ConnectionShutdown;
     }
+
     public void PublishTodo(TodoPublishModel platformPublishedDto)
     {
         var message = JsonSerializer.Serialize(platformPublishedDto);

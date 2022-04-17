@@ -10,12 +10,14 @@ namespace Awesome.Todo.Api.Features.Todos.Create;
 
 public class Handler : IRequestHandler<CommandRequest, IActionResult>
 {
+    private readonly IConfiguration configuration;
     private readonly AwesomeDbContext context;
     private readonly IMapper mapper;
     private readonly IMessageBusClient messageBusClient;
 
-    public Handler(AwesomeDbContext context, IMapper mapper, IMessageBusClient messageBusClient)
+    public Handler(IConfiguration configuration, AwesomeDbContext context, IMapper mapper, IMessageBusClient messageBusClient)
     {
+        this.configuration = configuration;
         this.context = context;
         this.mapper = mapper;
         this.messageBusClient = messageBusClient;
@@ -29,6 +31,7 @@ public class Handler : IRequestHandler<CommandRequest, IActionResult>
         await context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
         var todoPublisher = this.mapper.Map<TodoPublishModel>(todo);
+        todoPublisher.Publisher = this.configuration["PublisherName"];
         this.messageBusClient.PublishTodo(todoPublisher);
 
         return new CreatedAtRouteResult("Todo.GetById", new { todo.Id }, this.mapper.Map<TodoReadModel>(todo));

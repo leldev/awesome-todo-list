@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Awesome.Todo.Api.Data;
+namespace Awesome.Datawarehouse.Api.Data;
 
 public class AwesomeDbContext : DbContext
 {
@@ -8,5 +8,5 @@ public class AwesomeDbContext : DbContext
     {
     }
 
-    public DbSet<Domain.Todo> Todos { get; set; }
+    public DbSet<Domain.DWTodo> DWTodos { get; set; }
 }

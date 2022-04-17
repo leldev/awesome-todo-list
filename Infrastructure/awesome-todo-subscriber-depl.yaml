@@ -1,0 +1,34 @@
+# kubectl apply -f awesome-todo-subscriber-depl.yaml
+# kubectl rollout restart deployment awesome-todo-subscriber-depl
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: awesome-todo-subscriber-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: awesome-todo-subscriber
+  template:
+    metadata:
+      labels:
+        app: awesome-todo-subscriber
+    spec:
+      containers:
+        - name: awesome-todo-subscriber
+          image: leldev/awesome.todo.subscriber:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: awesome-todo-subscriber-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: awesome-todo-subscriber
+  ports:
+  - name: awesome-todo-subscriber
+    protocol: TCP
+    port: 80
+    targetPort: 80 

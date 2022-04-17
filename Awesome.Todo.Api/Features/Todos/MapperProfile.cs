@@ -11,8 +11,6 @@ public class MapperProfile : Profile
         this.CreateMap<Domain.Todo, TodoReadModel>().ReverseMap();
         this.CreateMap<Domain.Todo, Create.CommandRequest>().ReverseMap();
         this.CreateMap<Domain.Todo, TodoWriteModel>().ReverseMap();
-        this.CreateMap<Domain.Todo, TodoPublishModel>()
-            .ForMember(d => d.Publisher, o => o.MapFrom(s => "Awesome.Todo.Publisher"))
-            .ReverseMap();
+        this.CreateMap<Domain.Todo, TodoPublishModel>().ReverseMap();
     }
 }

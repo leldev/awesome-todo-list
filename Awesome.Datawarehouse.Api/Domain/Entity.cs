@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Awesome.Todo.Api.Domain;
+namespace Awesome.Datawarehouse.Api.Domain;
 
 public abstract class Entity<TId>
 {

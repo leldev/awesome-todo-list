@@ -2,7 +2,7 @@
 
 namespace Awesome.Todo.Api.Domain;
 
-public class Todo
+public class Todo : Entity<int>
 {
     public static int MaxNameLength => 35;
 
@@ -10,10 +10,6 @@ public class Todo
     {
         this.Name = string.Empty;
     }
-
-    [Key]
-    [Required]
-    public int Id { get; set; }
 
     [Required]
     public string Name { get; set; }
